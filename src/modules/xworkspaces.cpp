@@ -46,6 +46,7 @@ namespace modules {
     m_click = m_conf.get(name(), "enable-click", m_click);
     m_scroll = m_conf.get(name(), "enable-scroll", m_scroll);
     m_revscroll = m_conf.get(name(), "reverse-scroll", m_revscroll);
+    m_ignoreviewport = m_conf.get(name(), "ignore-viewport", m_ignoreviewport);
 
     // Add formats and elements
     m_formatter->add(DEFAULT_FORMAT, TAG_LABEL_STATE, {TAG_LABEL_STATE, TAG_LABEL_MONITOR});
@@ -203,7 +204,10 @@ namespace modules {
      * We use this to map workspaces to viewports, desktop i is at position
      * ws_positions[i].
      */
-    vector<position> ws_positions = ewmh_util::get_desktop_viewports();
+    vector<position>;
+    if (!m_ignoreviewport) { 
+        ws_positions = ewmh_util::get_desktop_viewports();
+    }
 
     auto num_desktops = m_desktop_names.size();
 

@@ -204,7 +204,7 @@ namespace modules {
      * We use this to map workspaces to viewports, desktop i is at position
      * ws_positions[i].
      */
-    vector<position>;
+    vector<position> ws_positions;
     if (!m_ignoreviewport) { 
         ws_positions = ewmh_util::get_desktop_viewports();
     }
